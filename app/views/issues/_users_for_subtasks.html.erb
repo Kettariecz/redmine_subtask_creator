@@ -1,0 +1,15 @@
+<% if User.current.allowed_to?(:create_subtask, @project)   then %>
+
+<fieldset id="users" class="collapsible collapsed box" style="border-width: 1px 1px 1px 1px"><legend onclick="toggleFieldset(this);"><%= l(:field_users_for_subtasks_goupname) %></legend>
+<div style="display: none;">
+	<% project.users.each do |user| %>
+	    <label class="floating">
+	    <%= check_box_tag 'user_sbtsk_copylist[]', user.id, nil, :id => nil %>
+	    <%=h user %>
+	    </label>
+	<% end %>
+	<%= hidden_field_tag 'user_sbtsk_copylist[]' %>
+</div>
+</fieldset>	
+
+<% end %>
